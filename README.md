@@ -2,16 +2,16 @@
 Arduino Based Phone is still under development, the code is open source.
 
 Features in phone :
-Music
-Videos
-Notes
-Clock
-Photos
-Maps
-Phone calls
-Radio
-Settings
-Calculator
+Music,
+Videos,
+Notes,
+Clock,
+Photos,
+Maps,
+Phone calls,
+Radio,
+Settings,
+Calculator.
 
 The program of the project takes less memory. Even you can extend the features of the phone like adding : fingerprint sensor , Messages ,GPS ........etc.
 
