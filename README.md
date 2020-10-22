@@ -11,7 +11,7 @@ Features in phone :
 7. Phone calls
 8. Radio
 9. Settings
-10 .Calculator
+10.Calculator
 
 The program of the project takes less memory. Even you can extend the features of the phone like adding : fingerprint sensor , Messages ,GPS ........etc.
 
