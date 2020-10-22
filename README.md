@@ -8,7 +8,7 @@ Features in phone :
 
 3. Notes
 
-4 .Clock
+   4 .Clock
 
 5. Photos
 
