@@ -134,7 +134,7 @@ int value = 15;
 
 int no;
 String number = "";
-int count = 0;
+int count = 1;
 
 void setup(void)
 {
@@ -796,13 +796,16 @@ void loop()
 
     else if (pixel_x > 111 && pixel_x < 210 && pixel_y > 415 && pixel_y < 447)// 'call' pressed!
     {
-      if (call == true && phone == false )
+      if (count >= 10)
       {
-        tft.fillScreen(BLACK);
-        bmpDraw("call.bmp", 0, 0);
-        delay(300);
-        phone = true;
-        call = false;
+        if (call == true && phone == false )
+        {
+          tft.fillScreen(BLACK);
+          bmpDraw("call.bmp", 0, 0);
+          delay(300);
+          phone = true;
+          call = false;
+        }
       }
     }
   }
