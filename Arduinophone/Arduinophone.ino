@@ -846,6 +846,25 @@ void loop()
 
   if (home == true && photos == false)//photos function
   {
+    if (pixel_x > 265 && pixel_x < 319 && pixel_y > 11 && pixel_y < 29)
+    {
+      photox++;
+      delay(300);
+    }
+    if (pixel_x > 213 && pixel_x < 264 && pixel_y > 7 && pixel_y < 33)
+    {
+      photox--;
+      delay(300);
+    }
+
+    if (photox <= 0)
+    {
+      photox = 1;
+    }
+    else if (photox >= 5)
+    {
+      photox = 4;
+    }
     tft.fillRect(83, 16, 10, 18, TEST);
     tft.setCursor(83, 16);
     tft.setTextSize(2);
@@ -893,25 +912,6 @@ void loop()
         }
         break;
     }
-    if (pixel_x > 265 && pixel_x < 319 && pixel_y > 11 && pixel_y < 29)
-    {
-      photox++;
-      delay(300);
-    }
-    if (pixel_x > 213 && pixel_x < 264 && pixel_y > 7 && pixel_y < 33)
-    {
-      photox--;
-      delay(300);
-    }
-
-    if (photox <= 0)
-    {
-      photox = 1;
-    }
-    else if (photox >= 5)
-    {
-      photox = 4;
-    }
   }
 
   //Maps sector
@@ -937,8 +937,27 @@ void loop()
     }
   }
 
-  else if (home == true && maps == false)//maps function
+  if (home == true && maps == false)//maps function
   {
+    if (pixel_x > 264 && pixel_x < 318 && pixel_y > 7 && pixel_y < 28)
+    {
+      mapx++;
+      delay(300);
+    }
+    if (pixel_x > 196 && pixel_x < 256 && pixel_y > 7 && pixel_y < 32)
+    {
+      mapx--;
+      delay(300);
+    }
+
+    if (mapx == 0)
+    {
+      mapx = 1;
+    }
+    else if (mapx == 19)
+    {
+      mapx = 18;
+    }
     tft.fillRect(83, 16, 28, 18, TEST);
     tft.setCursor(83, 16);
     tft.setTextSize(2);
@@ -1111,26 +1130,6 @@ void loop()
           mapy = true;
         }
     }
-
-    if (pixel_x > 264 && pixel_x < 318 && pixel_y > 7 && pixel_y < 28)
-    {
-      mapx++;
-      delay(300);
-    }
-    if (pixel_x > 196 && pixel_x < 256 && pixel_y > 7 && pixel_y < 32)
-    {
-      mapx--;
-      delay(300);
-    }
-
-    if (mapx == 0)
-    {
-      mapx = 1;
-    }
-    else if (mapx == 19)
-    {
-      mapx = 18;
-    }
   }
 
   //Clock sector
@@ -1154,7 +1153,7 @@ void loop()
       bmpDraw("home.bmp", 0, 0);
     }
   }
-  else if (home == true && clock == false)//clock function
+  if (home == true && clock == false)//clock function
   {
     t = rtc.getTime();
     tft.fillRect(170, 50, 50, 50, BLACK); // seconds update
@@ -1350,7 +1349,7 @@ void loop()
       notes = false;
     }
   }
-  else if (notes == false && home == true)//drawing area
+  if (notes == false && home == true)//drawing area
   {
     xpos = pixel_x;
     ypos = pixel_y;
@@ -1373,48 +1372,48 @@ void loop()
       {
         currentcolor = RED;
       }
-      else if (pixel_x > 52 && pixel_x < 94)
+      if (pixel_x > 52 && pixel_x < 94)
       {
         currentcolor = WHITE;
       }
-      else if (pixel_x > 94 && pixel_x < 136)
+      if (pixel_x > 94 && pixel_x < 136)
       {
         currentcolor = YELLOW;
       }
-      else if (pixel_x > 136 && pixel_x < 178)
+      if (pixel_x > 136 && pixel_x < 178)
       {
         currentcolor = GREEN;
       }
-      else if (pixel_x > 178 && pixel_x < 220)
+      if (pixel_x > 178 && pixel_x < 220)
       {
         currentcolor = BLUE;
       }
-      else if (pixel_x > 220 && pixel_x < 262)
+      if (pixel_x > 220 && pixel_x < 262)
       {
         currentcolor = CYAN;
       }
-      else if (pixel_x > 262 && pixel_x < 304)
+      if (pixel_x > 262 && pixel_x < 304)
       {
         currentcolor = MAGENTA;
       }
     }
 
 
-    else if (pixel_y > 257 && pixel_y < 301)//selecting bush thickness
+    if (pixel_y > 257 && pixel_y < 301)//selecting bush thickness
     {
       if (pixel_x > 11 && pixel_x < 65)
       {
         PENRADIUS = 1;
       }
-      else if (pixel_x > 93 && pixel_x < 147)
+      if (pixel_x > 93 && pixel_x < 147)
       {
         PENRADIUS = 2;
       }
-      else if (pixel_x > 174 && pixel_x < 228)
+      if (pixel_x > 174 && pixel_x < 228)
       {
         PENRADIUS = 3;
       }
-      else if (pixel_x > 253 && pixel_x < 307)
+      if (pixel_x > 253 && pixel_x < 307)
       {
         PENRADIUS = 4;
       }
