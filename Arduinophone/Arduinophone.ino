@@ -1,32 +1,32 @@
 /*
-MIT License
+  MIT License
 
-Copyright (c) 2020 ARDUINOTECH
+  Copyright (c) 2020 ARDUINOTECH
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
 
- * video: https://youtu.be/wpyd6bKWxIQ
- * Instructions : http://www.RinkyDinkElectronics.com
- * This code is about how to make phone.
- * Remmber than you need to use 3.5 inch mcu friend tft display.
- * And also calibrate the display to use the code.
- * Also change the display driver name. 
+   video: https://youtu.be/wpyd6bKWxIQ
+   Instructions : http://www.RinkyDinkElectronics.com
+   This code is about how to make phone.
+   Remmber than you need to use 3.5 inch mcu friend tft display.
+   And also calibrate the display to use the code.
+   Also change the display driver name.
 */
 #include <Adafruit_GFX.h>
 #include <MCUFRIEND_kbv.h>
@@ -42,8 +42,8 @@ DS3231  rtc(SDA, SCL);
 Time  t;
 int activate;
 
-const int XP=8,XM=A2,YP=A3,YM=9; //320x480 ID=0x9486
-const int TS_LEFT=213,TS_RT=932,TS_TOP=955,TS_BOT=88;//calibrate the touch here. 
+const int XP = 8, XM = A2, YP = A3, YM = 9; //320x480 ID=0x9486
+const int TS_LEFT = 239, TS_RT = 927, TS_TOP = 954, TS_BOT = 96; //calibrate the lcd values here.
 
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
@@ -71,6 +71,7 @@ bool touch (void)
 #define WHITE   0xFFFF
 #define AQUA    0x5D1C
 #define PAUSED  0x18E5
+#define CLOCK   0x3DDF
 #define TEST    0xE75D
 #define TEST1   0x2124//side color
 #define VOLUME  0x047C// ball color
@@ -487,6 +488,23 @@ void loop()
       //Serial.println ("Button Equal");
       Num2 = Number;
       answer = true;
+      if (answer == true)
+      {
+        switch (op)
+        {
+          case 1 :
+            Number = Num1 + Num2;
+            break;
+          case 2:
+            Number = Num1 - Num2;
+            break;
+          case 3:
+            Number = Num1 * Num2;
+            break;
+          case 4:
+            Number = Num1 / Num2;
+        }
+      }
       tft.fillRect(10, 50, 300, 80, WHITE);  //clear result box
       tft.setCursor(10, 50);
       tft.setTextSize(3);
@@ -533,24 +551,6 @@ void loop()
         op = 4;
         tft.print("/");
         delay(300);
-      }
-    }
-
-    if (answer == true)
-    {
-      switch (op)
-      {
-        case 1 :
-          Number = Num1 + Num2;
-          break;
-        case 2:
-          Number = Num1 - Num2;
-          break;
-        case 3:
-          Number = Num1 * Num2;
-          break;
-        case 4:
-          Number = Num1 / Num2;
       }
     }
   }
@@ -1165,7 +1165,7 @@ void loop()
 
     //Temperature
     tft.setCursor(30, 240);
-    tft.setTextColor(RED);
+    tft.setTextColor(CLOCK);
     tft.setTextSize(4);
     tft.print("Temp:");
     tft.print(rtc.getTemp());
@@ -1174,13 +1174,13 @@ void loop()
     // Day
     tft.setCursor(50, 180);
     tft.setTextSize(4);
-    tft.setTextColor(CYAN);
+    tft.setTextColor(CLOCK);
     tft.print(rtc.getDOWStr());
 
     //time
     tft.setCursor(30, 60);
     tft.setTextSize(4);
-    tft.setTextColor(GREEN);
+    tft.setTextColor(CLOCK);
 
     if (t.hour >= 12)
     {
@@ -1248,7 +1248,7 @@ void loop()
 
     //Date
     tft.setCursor(30, 120);
-    tft.setTextColor(YELLOW);
+    tft.setTextColor(CLOCK);
     if (t.date <= 9) {
       tft.print("0");
       tft.print(t.date);
@@ -1298,7 +1298,6 @@ void loop()
         tft.print("DEC");
         break;
     }
-
     tft.setCursor(200, 120);
     tft.print(t.year);
     delay(1000);
