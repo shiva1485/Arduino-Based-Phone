@@ -43,12 +43,12 @@ bool touch (void)
 # define Acknowledge 0x00 //Returns info with command 0x41 [0x01: info, 0x00: no info]
 # define ACTIVATED LOW
 
-bool home1 = false;
+bool home = false;
 bool music = false;
 bool like = false;
 bool musicx = false;
 bool musicy = false;
-bool pause1 = false;
+bool pause = false;
 bool shuffle = false;
 bool repeat = false;
 
@@ -71,7 +71,7 @@ void setup(void)
   execute_CMD(0x06, 0, 23);// Set the volume (0x00~0x30)
 
   music = true;
-  pause1 = true;
+  pause = true;
   shuffle = true;
   repeat = true;
   like = true;
