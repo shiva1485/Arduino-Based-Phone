@@ -1,11 +1,11 @@
 Here we are going to see about creating hex codes for varitey of colors. 
-To generate hex code colors first we need to pick a color.
+To generate hex code for colors first we need to pick a color from the desired picture.
 Next open picture using windows paint and select color picker option.
 Now place the color picker on the color you want to generate the hex codes and click on the color.
-Now search for edit colors option there only.
-Now open it after opening it notedown the Red , Green , Blue values.
+Now search for edit colors option.
+Now open it after opening it notedown the Red , Green , Blue values which are given there.
 Now go to this link: http://www.barth-dev.de/online/rgb565-color-picker/
-After opening go select choose color option and type the Red , Green , Blue values which we have notedown.
+After opening the link go select choose color option and type the Red , Green , Blue values which we have notedown.
 Now hex codes would be generated.
 Now copy the hex codes from RGB565 and use it.
 
