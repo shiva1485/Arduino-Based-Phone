@@ -1,0 +1,13 @@
+Download the Libraries from below and add to your arduino ide.
+
+1. DS3231 : http://www.rinkydinkelectronics.com/library.php?id...
+
+2. Adafruit_GFX Library : https://github.com/adafruit/Adafruit-GFX-Library.g...
+
+3. MCU Friend Library: https://github.com/prenticedavid/MCUFRIEND_kbv.git
+
+4. Adafruit_TouchScreen Libary: https://github.com/adafruit/Adafruit_TouchScreen.g...
+
+Download this libraries only there is no need to download DF player mini library, SD card library and SPI library.
+
+SPI and SD card library are already preinstalled in Arduino IDE and DF player mini program is written in the code.
