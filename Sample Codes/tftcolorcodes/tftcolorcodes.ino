@@ -21,37 +21,3 @@
 #define MAROON       0x7800
 #define PURPLE       0x780F
 #define OLIVE        0x7BE0
-
-
-
-bmpDraw("x.bmp", 70, 150);
-bmpDraw("z.bmp", 70, 150);
-bmpDraw("y.bmp", 70, 150);
-bmpDraw("w.bmp", 70, 150);
-bmpDraw("v.bmp", 70, 150);
-bmpDraw("u.bmp", 70, 150);
-
-bmpDraw("t.bmp", 70, 150);
-bmpDraw("r.bmp", 70, 150);
-bmpDraw("q.bmp", 70, 150);
-bmpDraw("p.bmp", 70, 150);
-bmpDraw("o.bmp", 70, 150);
-
-bmpDraw("n.bmp", 70, 150);
-bmpDraw("m.bmp", 70, 150);
-bmpDraw("l.bmp", 70, 150);
-bmpDraw("k.bmp", 70, 150);
-bmpDraw("j.bmp", 70, 150);
-bmpDraw("i.bmp", 70, 150);
-
-bmpDraw("h.bmp", 70, 150);
-bmpDraw("g.bmp", 70, 150);
-bmpDraw("f.bmp", 70, 150);
-bmpDraw("e.bmp", 70, 150);
-bmpDraw("d.bmp", 70, 150);
-bmpDraw("c.bmp", 70, 150);
-
-bmpDraw("b.bmp", 70, 150);
-bmpDraw("a.bmp", 70, 150);
-bmpDraw("a1.bmp", 70, 150);
-bmpDraw("a2.bmp", 70, 150);
