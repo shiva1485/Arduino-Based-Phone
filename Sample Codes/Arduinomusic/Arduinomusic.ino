@@ -58,7 +58,7 @@ int onetime = 0;
 void setup(void)
 {
   Serial1.begin(9600);
-  tft.begin(0x9486);
+  tft.begin(0x9486);;//change the driver name in accordence to your display driver.
   if (!SD.begin(53))
   {
     return;
