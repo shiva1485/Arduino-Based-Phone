@@ -42,8 +42,8 @@ DS3231  rtc(SDA, SCL);
 Time  t;
 int activate;
 
-const int XP = 8, XM = A2, YP = A3, YM = 9; //320x480 ID=0x9486
-const int TS_LEFT = 239, TS_RT = 927, TS_TOP = 954, TS_BOT = 96; //calibrate the lcd values here.
+const int XP=8,XM=A2,YP=A3,YM=9; //320x480 ID=0x9486
+const int TS_LEFT=109,TS_RT=904,TS_TOP=944,TS_BOT=84; //calibrate the lcd values here.
 
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
@@ -73,6 +73,7 @@ bool touch (void)
 #define PAUSED  0x18E5
 #define CLOCK   0x3DDF
 #define TEST    0xE75D
+#define BLUE1    0x001F
 #define TEST1   0x2124//side color
 #define VOLUME  0x047C// ball color
 #define TEST2   0x1A0D//slider color
@@ -139,19 +140,31 @@ int count = 1;
 void setup(void)
 {
   pinMode(49, OUTPUT);//shutdown
+  pinMode(46, OUTPUT); //buzzer
   pinMode(48, OUTPUT);//restart
   pinMode(47, OUTPUT);//led pin
+
   digitalWrite(48, LOW);
   digitalWrite(49, LOW);
+  digitalWrite(46, LOW);
   digitalWrite(47, HIGH);
   delay(500);
   digitalWrite(47, LOW);
+
   Serial.begin(9600);
   Serial1.begin(9600);//df player mini
   Serial3.begin(9600);//gsm
-  tft.begin(0x9486);
+  tft.begin(0x9486);;//change the driver name in accordence to your display driver.
   if (!SD.begin(53))
   {
+    digitalWrite(46, HIGH);
+    delay(1000);
+    digitalWrite(46,LOW);
+    tft.fillScreen(BLUE1);
+    tft.setCursor(10, 10);
+    tft.setTextSize(2);
+    tft.setTextColor(WHITE);
+    tft.print("SD card Failed!");
     return;
   }
   rtc.begin();
@@ -1243,9 +1256,9 @@ void loop()
 
     //AM/PM
     if (activate == 1) {
-      tft.print("AM");
-    } else {
       tft.print("PM");
+    } else {
+      tft.print("AM");
     }
 
     //Date
@@ -1399,7 +1412,7 @@ void loop()
     }
 
 
-    if (pixel_y > 257 && pixel_y < 301)//selecting bush thickness
+    else if (pixel_y > 257 && pixel_y < 301)//selecting bush thickness
     {
       if (pixel_x > 11 && pixel_x < 65)
       {
@@ -1489,7 +1502,7 @@ void loop()
 
   else if (settings == true && battery == false)
   {
-    int volt = analogRead(A5);// read the input
+    int volt = analogRead(A7);// read the input
     double voltage = map(volt, 0, 1023, 0, 2500);// map 0-1023 to 0-2500.
 
     voltage /= 100;// divide by 100 to get the decimal values
