@@ -22,7 +22,7 @@
   SOFTWARE.
 
    video: https://youtu.be/wpyd6bKWxIQ
-   Instructions : http://www.RinkyDinkElectronics.com
+   Instructions : https://www.instructables.com/Arduino-Based-Phone-Prototype/
    This code is about how to make phone.
    Remmber than you need to use 3.5 inch mcu friend tft display.
    And also calibrate the display to use the code.
