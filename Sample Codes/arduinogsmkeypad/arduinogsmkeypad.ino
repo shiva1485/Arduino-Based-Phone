@@ -49,7 +49,7 @@ bool call = false;
 void setup(void)
 {
   Serial.begin(9600);
-  Serial3.begin(9600);
+  Serial1.begin(38400);
   tft.begin(0x9486);
   if (!SD.begin(53))
   {
@@ -65,6 +65,15 @@ void setup(void)
 
 void loop()
 {
+  if (Serial1.available())//This one read the data from gsm and prints it to the serial moniter.
+  {
+    Serial.write(Serial1.read());
+    tft.setCursor(0, 0);
+    tft.setTextSize(3);
+    tft.setTextColor(WHITE);
+    tft.print(Serial1.read());
+  }
+
   touch();
 
   if (pixel_x > 21 && pixel_x < 76 && pixel_y > 421 && pixel_y < 465)//phone icon is pressed
@@ -272,7 +281,15 @@ void loop()
         {
           tft.fillScreen(BLACK);
           bmpDraw("call.bmp", 0, 0);
+
+          tft.setCursor(111, 77);
+          tft.setTextSize(3);
+          tft.setTextColor(BLACK);
+          tft.print(number);
           delay(300);
+          Serial1.print("ATD");
+          Serial1.print(number);
+          Serial1.println(";");
           phone = true;
           call = false;
         }
@@ -284,6 +301,7 @@ void loop()
   {
     if (call == false && phone == true)
     {
+      Serial1.print("ATH");
       tft.fillScreen(BLACK);
       bmpDraw("phone1.bmp", 0, 0);
       call = true;
