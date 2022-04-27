@@ -49,7 +49,7 @@ bool call = false;
 void setup(void)
 {
   Serial.begin(9600);
-  Serial1.begin(38400);
+  Serial1.begin(38400);//Set the baud rate according to your gsm working one.(This may work for some but not for other so try changing the baude to get it work.)
   tft.begin(0x9486);
   if (!SD.begin(53))
   {
